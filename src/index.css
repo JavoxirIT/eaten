@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0039ff;
+  border-radius: 100px;
+}
+
+fieldset {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid silver;
+}
+
+legend {
+  border: 1px solid silver !important;
+  padding: 2px 15px !important;
+  border-radius: 25px;
+  width: auto !important;
+  margin-bottom: 0px !important;
+  color: black;
+  font-size: 14px;
+}
+
+.ant-input-number {
+  width: 100%;
+}
+
+.ant-form-item {
+  margin-bottom: 10px;
+}
+
+.ant-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:root {
+  --color-eeeeee: #eeeeee;
+  --color-telegram-btn: #3476ab;
+  --color-white: #ffff;
+  --color-f5f5f5: #f5f5f5;
+  --color-f6f6f6: #f6f6f6;
+  --color-d9d9d9: #d9d9d9;
+  --color-4096ff: #4096ff;
+  --color-000000E0: #000000e0;
+  --color-8c8c8ce0: #8c8c8ce0;
+  --padding-10-30: 0.625rem 1.875rem;
+  --padding-4-11: 0.25rem 0.6875rem;
+  --padding-5-11: 0.5rem 0.6875rem;
+  --padding-15: 1.25rem;
+  --padding-5: 0.3125rem;
+  --margin-10: 0.625rem;
+  --bottom-5: 0.3125rem;
+  --cursor-pointer: pointer;
+  --background-gradient: linear-gradient(
+    90deg,
+    rgba(16, 9, 223, 0.8799894957983193) 23%,
+    rgba(126, 99, 236, 0.9192051820728291) 85%
+  );
+  --filter-shadow-color-2: drop-shadow(
+      2px 2px 2px rgba(16, 9, 223, 0.8799894957983193)
+    )
+    drop-shadow(2px 2px 2px rgba(126, 99, 236, 0.9192051820728291));
+  --background-reset-gradient: linear-gradient(
+    90deg,
+    rgba(242, 57, 76, 1) 38%,
+    rgba(236, 99, 99, 0.8295693277310925) 100%
+  );
+  --filter-shadow-color: drop-shadow(
+      2px 2px 2px rgba(131, 58, 180, 0.8911939775910365)
+    )
+    drop-shadow(1px 2px 2px rgba(252, 176, 69, 0.8379726890756303))
+    drop-shadow(0px 1px 2px rgba(253, 29, 29, 0.7707457983193278));
+  --text-transform-uppercase: uppercase;
+  --text-align-center: center;
+  --font-size-22rem: 1.375rem;
+  --font-size-18rem: 1.125rem;
+  --font-size-22px: 22px;
+  --font-size-18px: 18px;
+  --font-size-14px: 14px;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-900: 900;
+  --letter-spacing-2: 0.125rem;
+  --line-height-1-5: 1.5;
+  --border-bottom-1-solid-eeeeee: 1px solid #eeeeee;
+  --border-none: none;
+  --border-radius-5px: 0.3125rem;
+  --border-radius-circle: 50%;
+  --box-shadow: 0 0.3125rem 0.3125rem -0.3125rem rgba(34, 60, 80, 0.6);
+  --box-shadow-2: 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+    0 1px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px 0 rgba(0, 0, 0, 0.03);
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* .leaflet-container {
+  width: 57rem;
+  height: 40rem;
+}
+
+.map-container {
+  position: relative;
+}
+
+.edit-location-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+} */

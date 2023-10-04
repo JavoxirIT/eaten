@@ -1,0 +1,50 @@
+/* listing wrapper */
+.ListingHeader {
+  padding: 0.625rem 0;
+}
+/*listing card*/
+.listingContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(365px, 1fr));
+  gap: var(--margin-10);
+}
+.listingImgBlockStyle {
+  width: 100%;
+}
+.listingTable {
+  width: 100%;
+  margin-top: 0.625rem;
+}
+.listingTableTd {
+  vertical-align: top;
+}
+.listingTextDescription {
+  text-align: justify;
+}
+/* block listing add and block leaflet */
+.blockLeaflet {
+  width: 100%;
+  height: 21.875rem !important;
+}
+.containerLafleatImg {
+  background-color: var(--color-f6f6f6);
+}
+.LafleatHeaderImg {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--margin-10);
+}
+.blockLafleatImg {
+  display: flex;
+  gap: var(--margin-10);
+}
+.cardLeafletImg {
+  width: 100%;
+  height: 15.625rem !important;
+  padding: var(--margin-10);
+}
+.blockLeafletImgItems {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}

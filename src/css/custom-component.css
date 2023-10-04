@@ -1,0 +1,30 @@
+.card-wrapper {
+  box-shadow: var(--box-shadow-2);
+  border-radius: var(--border-radius-5px);
+  background-color: var(--color-white);
+  padding: var(--padding-15);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--padding-15);
+  align-items: center;
+}
+.header-title {
+  width: 70%;
+  margin: 0;
+  font-size: 1.125rem;
+}
+.header-btn {
+  align-self: flex-start;
+  height: max-content;
+  font-size: 1.875rem;
+  border: none;
+  outline: none;
+  background: none;
+  color: red;
+  cursor: var(--cursor-pointer);
+  padding: 0;
+}
+.card-body {
+}

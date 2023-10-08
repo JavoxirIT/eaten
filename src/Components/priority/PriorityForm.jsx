@@ -1,14 +1,8 @@
 import { Button, ColorPicker, Form, Input } from "antd";
+import { buttonLoyaut, formItemLayout } from "../../tools/formLayout";
 
 const { Item } = Form;
-const formItemLayout = {
-  labelCol: {
-    span: 6,
-  },
-  wrapperCol: {
-    span: 14,
-  },
-};
+
 export default function PriorityForm({ onFinish, form }) {
   return (
     <Form form={form} onFinish={onFinish} {...formItemLayout}>
@@ -24,12 +18,7 @@ export default function PriorityForm({ onFinish, form }) {
       <Item name="desc" label="Batafsil ma`lumot">
         <Input.TextArea showCount />
       </Item>
-      <Item
-        wrapperCol={{
-          span: 12,
-          offset: 6,
-        }}
-      >
+      <Item wrapperCol={buttonLoyaut.button}>
         <Button htmlType="submit" type="primary">
           Qo'shish
         </Button>

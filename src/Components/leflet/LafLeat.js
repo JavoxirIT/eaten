@@ -40,17 +40,17 @@ const SetViewToCurrentLocation = ({ location, setLocation }) => {
 
 const CustomizeMarker = ({ location, setLocation }) => {
   const [draggable, setDraggable] = useState(false);
-  console.log(
-    "*************** THE INPUT LOCATION IS ***************** ",
-    location
-  );
+  //   console.log(
+  //     "*************** THE INPUT LOCATION IS ***************** ",
+  //     location
+  //   );
   let lat = location.lat;
   let lng = location.lng;
   const [position, setPosition] = useState({ lat, lng });
-  console.log(
-    "-----------------THE POS VALUE IS ------------------- ",
-    position
-  );
+  //   console.log(
+  //     "-----------------THE POS VALUE IS ------------------- ",
+  //     position
+  //   );
   const markerRef = useRef(null);
 
   const eventHandlers = useMemo(

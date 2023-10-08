@@ -7,7 +7,7 @@ import {
   EditOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
-import { Button, Drawer, Input, Space, Table } from "antd";
+import { Button, Drawer, Input, Row, Space, Table } from "antd";
 import { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import { TableStat } from "./TableStat";
@@ -168,7 +168,7 @@ export function MainTable({
     width: 110,
     align: "right",
     render: (_, rec) => (
-      <>
+      <Row>
         {viewBtn ? (
           <Button
             type="primary"
@@ -200,7 +200,7 @@ export function MainTable({
           shape="circle"
           icon={<DeleteOutlined />}
         />
-      </>
+      </Row>
     ),
   });
 

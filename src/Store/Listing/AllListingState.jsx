@@ -66,6 +66,7 @@ export function AllListingState({ children }) {
           });
       }
     });
+    setLoading(false);
   }
 
   function addListing(value) {
@@ -79,10 +80,6 @@ export function AllListingState({ children }) {
       expry_date: dateFormat(value.expry_date, "yyyy-mm-dd HH:MM:ss"),
       rating: String(value.rating),
     };
-
-    //   Y-m-d H:i:s
-
-    console.log("listing", value);
     Swal.fire({
       title: "Ishinchingiz komilmi",
       icon: "warning",

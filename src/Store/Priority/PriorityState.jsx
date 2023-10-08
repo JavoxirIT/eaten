@@ -91,6 +91,7 @@ export function PriorityState({ children }) {
           });
       }
     });
+    setLoading(false);
   }
   function onEdit(value) {
     setLoading(true);
@@ -140,6 +141,7 @@ export function PriorityState({ children }) {
           });
       }
     });
+    setLoading(false);
   }
   const value = {
     form,

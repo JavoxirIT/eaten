@@ -54,6 +54,16 @@ export function SidebarMenu() {
               icon: <ProjectFilled />,
               label: <NavLink to="priority">Ustunlik</NavLink>,
             },
+            {
+              key: "listingStatus",
+              icon: <ProjectFilled />,
+              label: <NavLink to="listingStatus">listing status</NavLink>,
+            },
+            {
+              key: "unitList",
+              icon: <ProjectFilled />,
+              label: <NavLink to="unitList">O`lchov birliklari</NavLink>,
+            },
           ],
         },
       ]}

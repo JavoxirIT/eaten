@@ -7,10 +7,16 @@ import { useCitiesAndDistrict } from "../Store/CitiesAndDistricts/useCitiesAndDi
 import { usePriority } from "../Store/Priority/usePriority";
 import { useListingStatus } from "../Store/ListingStatus/useListingStatus";
 import { useUnit } from "../Store/unit/useUnit";
+import { useFoodType } from "Store/FoodType/useFoodType";
+import { useCategory } from "Store/Category/useCategory";
 import AdminLayout from "../Layyouts/AdminLayout";
-import Error404 from "../Components/404/Error404";
 import LoginLayout from "../Layyouts/AuthLayout/LoginLayout";
 import IndexPage from "../Pages/Index/IndexPage";
+import Category from "Pages/Category/Catrgory";
+import FoodType from "Pages/FoodType/FoodType";
+import Error404 from "../Components/404/Error404";
+import { OneListings } from "../Components/listing/OneListings";
+import { useListingType } from "Store/ListingType/useListingType";
 
 const AllUsers = lazy(() => import("../Pages/Users/AllUsers"));
 const Listing = lazy(() => import("../Pages/Listing/Listing"));
@@ -28,6 +34,10 @@ export function Router() {
   const { getPriority } = usePriority();
   const { getListingStatus } = useListingStatus();
   const { getUnit } = useUnit();
+  const { getFoodType } = useFoodType();
+  const { getCategory } = useCategory();
+  const { getLidtingType } = useListingType();
+
   useEffect(() => {
     getBooking();
     getListing();
@@ -36,6 +46,9 @@ export function Router() {
     getUnit();
     getPriority();
     getListingStatus();
+    getFoodType();
+    getCategory();
+    getLidtingType();
   }, []);
 
   return useRoutes([
@@ -64,6 +77,10 @@ export function Router() {
           element: <Listing />,
         },
         {
+          path: "/all-listing/:id",
+          element: <OneListings />,
+        },
+        {
           path: "priority",
           element: <Priority />,
         },
@@ -74,6 +91,14 @@ export function Router() {
         {
           path: "unitList",
           element: <UnitList />,
+        },
+        {
+          path: "foodType",
+          element: <FoodType />,
+        },
+        {
+          path: "category",
+          element: <Category />,
         },
       ],
     },

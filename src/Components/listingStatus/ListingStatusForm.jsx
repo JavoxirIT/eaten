@@ -16,10 +16,22 @@ export default function ListingStatusForm({
           <Input />
         </Item>
       )}
-      <Item name="name" label="Nomi">
+      <Item name="nameuz" label="Nomi UZ">
         <Input allowClear />
       </Item>
-      <Item name="desc" label="Qo`shimcha ma`lumot">
+      <Item name="nameru" label="Nomi RU">
+        <Input allowClear />
+      </Item>
+      <Item name="nameen" label="Nomi EN">
+        <Input allowClear />
+      </Item>
+      <Item name="descuz" label="Qo`shimcha ma`lumot UZ">
+        <TextArea allowClear />
+      </Item>
+      <Item name="descru" label="Qo`shimcha ma`lumot RU">
+        <TextArea allowClear />
+      </Item>
+      <Item name="descen" label="Qo`shimcha ma`lumot EN">
         <TextArea allowClear />
       </Item>
       <Item wrapperCol={buttonLoyaut.button}>

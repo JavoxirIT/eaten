@@ -1,24 +1,9 @@
-import React, { useState } from "react";
-import { Button } from "antd";
-import "./CssModal.css";
+import React from "react";
+import "../ModalMiddle/CssModal.css";
 
-export function ModalCenter({ children, name }) {
-  const [visible, setVisible] = useState(false);
-  function visibleModal() {
-    setVisible(true);
-  }
-
+export function Modal({ children, setVisible, visible }) {
   return (
     <>
-      <Button
-        type="primary"
-        onClick={(e) => {
-          visibleModal();
-        }}
-        style={{ fontSize: "1.125rem" }}
-      >
-        {name}
-      </Button>
       <div
         className={
           visible === true ? "edit-open-modal active" : "edit-open-modal"

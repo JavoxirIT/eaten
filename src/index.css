@@ -114,7 +114,10 @@ legend {
   width: 100%;
   height: 100%;
 }
-
+.priority-desc {
+  text-align: justify !important;
+  vertical-align: top !important;
+}
 /* .leaflet-container {
   width: 57rem;
   height: 40rem;

@@ -5,9 +5,13 @@ import { redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import dateFormat from "dateformat";
 import { useAuthUser } from "react-auth-kit";
+import { useForm } from "antd/es/form/Form";
+
 export function AllListingState({ children }) {
+  const [form] = useForm();
   const auth = useAuthUser();
   const [allListing, setAllListing] = useState([]);
+  const [listingOne, setListingOne] = useState([]);
   const [location, setDataLocation] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -64,9 +68,8 @@ export function AllListingState({ children }) {
           .finally(() => {
             setLoading(false);
           });
-      }
+      } else setLoading(false);
     });
-    setLoading(false);
   }
 
   function addListing(value) {
@@ -117,13 +120,65 @@ export function AllListingState({ children }) {
     });
   }
 
+  function getOneListing(id) {
+    setLoading(true);
+    axios
+      .get(`/listing/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setListingOne(res.data);
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Ma`lumot topilmadi!",
+          icon: "error",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  function onEditListing(values) {
+    setLoading(true);
+    axios
+      .put(`listing/${values.id}`, values)
+      .then((res) => {
+        if (res.status === 200) {
+          getOneListing(values.id);
+          Swal.fire({
+            title: "O`zgartirildi!",
+            icon: "success",
+          });
+
+          console.log("res", res);
+        } else {
+          Swal.fire({
+            title: "Ma`lumot O`zgartirilmadi!",
+            icon: "error",
+          });
+        }
+      })
+      .catch((error) => {
+        redirect("/login");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
   const value = {
     getListing,
+    getOneListing,
     allListing,
     onDelete,
     addListing,
     setDataLocation,
     loading,
+    listingOne,
+    onEditListing,
+    form,
   };
   return (
     <AllListingContext.Provider value={value}>

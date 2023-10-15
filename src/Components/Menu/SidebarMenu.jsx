@@ -57,12 +57,22 @@ export function SidebarMenu() {
             {
               key: "listingStatus",
               icon: <ProjectFilled />,
-              label: <NavLink to="listingStatus">listing status</NavLink>,
+              label: <NavLink to="listingStatus">Buyurtmalar holati</NavLink>,
             },
             {
               key: "unitList",
               icon: <ProjectFilled />,
               label: <NavLink to="unitList">O`lchov birliklari</NavLink>,
+            },
+            {
+              key: "foodType",
+              icon: <ProjectFilled />,
+              label: <NavLink to="foodType">Ovqatlar Turi</NavLink>,
+            },
+            {
+              key: "category",
+              icon: <ProjectFilled />,
+              label: <NavLink to="category">Toifalar</NavLink>,
             },
           ],
         },

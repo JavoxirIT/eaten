@@ -6,11 +6,11 @@ import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
 import { useAuthHeader, useIsAuthenticated, useSignOut } from "react-auth-kit";
 import axios from "axios";
-import { SidebarMenu } from "../Components/Menu/SidebarMenu";
+import { SidebarMenu } from "../Components/menu/SidebarMenu";
 import { useAllBooking } from "../Store/Booking/useAllBooking";
 import { useAllListing } from "../Store/Listing/useAllListing";
 import { useCitiesAndDistrict } from "../Store/CitiesAndDistricts/useCitiesAndDistrict";
-import { OnSuspense } from "../Components/Suspense/OnSuspense";
+import { OnSuspense } from "../Components/suspense/OnSuspense";
 import { useUnit } from "../Store/unit/useUnit";
 
 export default function AdminLayout() {

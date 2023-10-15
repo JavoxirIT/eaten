@@ -21,31 +21,66 @@ export default function ListingStatus() {
         return index + 1;
       },
       width: 150,
+      className: "priority-desc",
     },
     {
-      title: "Nomi",
-      dataIndex: "name",
-      key: "name",
+      title: "Nomi UZ",
+      dataIndex: "nameuz",
+      key: "nameuz",
+      className: "priority-desc",
     },
     {
-      title: "Qo`shimcha ma`lumit",
-      dataIndex: "desc",
-      key: "desc",
+      title: "Nomi RU",
+      dataIndex: "nameru",
+      key: "nameru",
+      className: "priority-desc",
+    },
+    {
+      title: "Nomi EN",
+      dataIndex: "nameen",
+      key: "nameen",
+      className: "priority-desc",
+    },
+    {
+      title: "Qo`shimcha ma`lumit UZ",
+      dataIndex: "descuz",
+      key: "descuz",
+      className: "priority-desc",
+    },
+    {
+      title: "Qo`shimcha ma`lumit RU",
+      dataIndex: "descru",
+      key: "descru",
+      className: "priority-desc",
+    },
+    {
+      title: "Qo`shimcha ma`lumit EN",
+      dataIndex: "descen",
+      key: "descen",
+      className: "priority-desc",
     },
   ];
 
   function onListingStatusEdit(e) {
     form.setFieldsValue({
       id: e?.id,
-      name: e?.name,
-      desc: e?.desc,
+      nameuz: e?.nameuz,
+      nameru: e?.nameru,
+      nameen: e?.nameen,
+      descuz: e?.descuz,
+      descru: e?.descru,
+      descen: e?.descen,
     });
   }
   const setEd = () => {
     form.setFieldsValue({
       id: "",
-      name: "",
-      desc: "",
+      nameuz: "",
+      nameru: "",
+      nameen: "",
+      descuz: "",
+      descru: "",
+      descen: "",
     });
   };
 

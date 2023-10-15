@@ -13,38 +13,83 @@ export default function UnitList() {
       render: (_, rec, index) => {
         return index + 1;
       },
-      width: 180,
+      className: "priority-desc",
     },
     {
-      title: "Nomi",
-      dataIndex: "name",
-      key: "name",
+      title: "Nomi UZ",
+      dataIndex: "nameuz",
+      key: "nameuz",
+      className: "priority-desc",
     },
     {
-      title: "Q`isqacha nomi",
-      dataIndex: "shortname",
-      key: "shortname",
+      title: "Nomi RU",
+      dataIndex: "nameru",
+      key: "nameru",
+      className: "priority-desc",
     },
     {
-      title: "Q`shimcha ma`lumot",
-      dataIndex: "description",
-      key: "description",
+      title: "Nomi EN",
+      dataIndex: "nameen",
+      key: "nameen",
+      className: "priority-desc",
+    },
+    {
+      title: "Q`isqacha nomi UZ",
+      dataIndex: "shortnameuz",
+      key: "shortnameuz",
+      className: "priority-desc",
+    },
+    {
+      title: "Q`isqacha nomi RU",
+      dataIndex: "shortnameru",
+      key: "shortnameru",
+      className: "priority-desc",
+    },
+    {
+      title: "Q`shimcha ma`lumot UZ",
+      dataIndex: "descriptionuz",
+      key: "descriptionuz",
+      className: "priority-desc",
+    },
+    {
+      title: "Q`shimcha ma`lumot RU",
+      dataIndex: "descriptionru",
+      key: "descriptionru",
+      className: "priority-desc",
+    },
+    {
+      title: "Q`shimcha ma`lumot EN",
+      dataIndex: "descriptionen",
+      key: "descriptionen",
+      className: "priority-desc",
     },
   ];
   function onUnitEditForm(e) {
     form.setFieldsValue({
       id: e?.id,
-      name: e?.name,
-      description: e?.description,
-      shortname: e?.shortname,
+      nameuz: e?.nameuz,
+      nameen: e?.nameen,
+      nameru: e?.nameru,
+      descriptionuz: e?.descriptionuz,
+      descriptionru: e?.descriptionru,
+      descriptionen: e?.descriptionen,
+      shortnameuz: e?.shortnameuz,
+      shortnameru: e?.shortnameru,
+      shortnameen: e?.shortnameen,
     });
   }
   const setEd = () => {
     form.setFieldsValue({
       id: "",
-      name: "",
-      description: "",
-      shortname: "",
+      nameuz: "",
+      nameru: "",
+      nameen: "",
+      descriptionuz: "",
+      descriptionru: "",
+      descriptionen: "",
+      shortnameuz: "",
+      shortnameru: "",
+      shortnameen: "",
     });
   };
 

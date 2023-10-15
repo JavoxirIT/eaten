@@ -8,8 +8,15 @@
   grid-template-columns: repeat(auto-fit, minmax(365px, 1fr));
   gap: var(--margin-10);
 }
+.listingContainerOne{
+
+  display: grid;
+  grid-template: auto / repeat(auto-fit, minmax(365px, 1fr));  ;
+  gap: var(--padding-5);
+}
 .listingImgBlockStyle {
   width: 100%;
+  height: 250px;
 }
 .listingTable {
   width: 100%;
@@ -20,6 +27,7 @@
 }
 .listingTextDescription {
   text-align: justify;
+  max-width: 450px;
 }
 /* block listing add and block leaflet */
 .blockLeaflet {

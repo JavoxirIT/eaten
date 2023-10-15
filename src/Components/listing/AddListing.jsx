@@ -18,16 +18,13 @@ import { useCitiesAndDistrict } from "../../Store/CitiesAndDistricts/useCitiesAn
 import { useEffect, useState } from "react";
 import { usePriority } from "../../Store/Priority/usePriority";
 import { useListingStatus } from "../../Store/ListingStatus/useListingStatus";
-import {
-  CloudUploadOutlined,
-  InboxOutlined,
-  UploadOutlined,
-} from "@ant-design/icons";
+import { CloudUploadOutlined, InboxOutlined } from "@ant-design/icons";
 import { useForm } from "antd/es/form/Form";
 import useLocalStorage from "../../hook/useLocalStorage";
 import { MyMapComponent } from "../leflet/Leflet";
 import css from "../../css/PageComponent.module.css";
 import { useAllListing } from "../../Store/Listing/useAllListing";
+import { configs } from "config/config";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -59,7 +56,7 @@ export function AddListing() {
   const props = {
     method: "POST",
     name: "image",
-    action: process.env.REACT_APP_IMAGE_UPLOAD_URL,
+    action: configs.uploadUrl,
     headers: {
       authorization: authHeader(),
     },

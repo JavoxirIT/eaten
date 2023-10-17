@@ -6,7 +6,6 @@ import { CategoryForm } from "./CategoryForm";
 export default function CategoryList() {
   const { category, form, loading, deleteCategory, editCategory, addCategory } =
     useCategory();
-
   function onClickTableEdit(e) {
     form.setFieldsValue({
       id: e?.id,

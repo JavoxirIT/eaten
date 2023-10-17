@@ -4,6 +4,7 @@ import { configs } from "config/config";
 
 const { Item } = Form;
 const { TextArea } = Input;
+
 export default function FoodTypeAdd({ form, onFinish }) {
   const props = {
     name: "image",
@@ -14,7 +15,7 @@ export default function FoodTypeAdd({ form, onFinish }) {
     accept: "image/*",
     onChange(info) {
       if (info.file.status !== "uploading") {
-        console.log(info.file);
+        // console.log(info.file);
         form.setFieldsValue({
           img: info.file.response.data.image,
         });

@@ -1,122 +1,120 @@
+import { useState } from "react";
 import { useForm } from "antd/es/form/Form";
 import axios from "axios";
-import { ListingType } from "context/Context";
-import { useState } from "react";
-import { redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Convenience } from "context/Context";
 
-export function ListingTypeState({ children }) {
+export function ConvenienceState({ children }) {
   const [form] = useForm();
-  const [listingType, setListingType] = useState([]);
+  const [convenience, setConvenience] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  function getLidtingType() {
+  function getConvenience() {
     setLoading(true);
     axios
-      .get("listing-type")
+      .get("convenience")
       .then((res) => {
         if (res.status === 200) {
-          setListingType(res.data);
+          setConvenience(res.data);
         }
       })
       .catch((err) => {
-        console.log("err", err);
+        console.error(err);
       })
       .finally(() => {
         setLoading(false);
       });
   }
-  function addListingType(value) {
+  function addConvenience(value) {
+    setLoading(true);
     Swal.fire({
-      title: "Ishinchingiz komilmi",
-      icon: "warning",
+      title: "Ishonchingiz komilmi",
+      icon: "info",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      cancelButtonText: "Yo'q`",
+      cancelButtonText: "Yo`q",
       confirmButtonText: "Ha",
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .post(`listing-type`, value)
-          .then((res) => {
-            if (res.status === 200) {
-              getLidtingType();
-              //   setListingType([...listingType, res.data]);
-              Swal.fire({
-                title: "Qo'shildi",
-                icon: "success",
-              });
+          .post("convenience", value)
+          .then((response) => {
+            if (response.status === 200) {
+              getConvenience();
+              form.resetFields();
             } else {
               Swal.fire({
-                title: "Ma`lumot Qo'shilmadi",
+                title: "Xatolik",
                 icon: "error",
               });
             }
           })
           .catch((error) => {
-            redirect("/login");
+            console.log(error);
           })
           .finally(() => {
             setLoading(false);
           });
       } else setLoading(false);
     });
+    setLoading(false);
   }
-  function editListingType(value) {
+  function editConvenience(value) {
+    setLoading(true);
     Swal.fire({
-      title: "Ishinchingiz komilmi",
-      icon: "warning",
+      title: "Ishonchingiz komilmi",
+      icon: "info",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      cancelButtonText: "Yo'q`",
+      cancelButtonText: "Yo`q",
       confirmButtonText: "Ha",
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .put(`listing-type/${value.id}`, value)
-          .then((res) => {
-            if (res.status === 200) {
-              getLidtingType();
-              //   setListingType([...listingType, res.data]);
+          .put(`convenience/${value.id}`, value)
+          .then((response) => {
+            if (response.status === 200) {
+              getConvenience();
               Swal.fire({
                 title: "O`zgartirildi",
                 icon: "success",
               });
             } else {
               Swal.fire({
-                title: "Ma`lumot O`zgarmadi",
+                title: "Xatolik",
                 icon: "error",
               });
             }
           })
           .catch((error) => {
-            redirect("/login");
+            console.log(error);
           })
           .finally(() => {
             setLoading(false);
           });
       } else setLoading(false);
     });
+    setLoading(false);
   }
-  function deleteListingType(event, item) {
+  function deleteConvenience(event, item) {
+    setLoading(true);
     Swal.fire({
-      title: "Ishinchingiz komilmi",
-      icon: "warning",
+      title: "Ishonchingiz komilmi",
+      icon: "info",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      cancelButtonText: "Yo'q`",
+      cancelButtonText: "Yo`q",
       confirmButtonText: "Ha",
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`listing-type/${item.id}`)
-          .then((res) => {
-            if (res.status === 200) {
-              getLidtingType();
-              //   setListingType([...listingType, res.data]);
+          .delete(`convenience/${item.id}`)
+          .then((response) => {
+            if (response.status === 200) {
+              getConvenience();
               Swal.fire({
                 title: "O`chirildi",
                 icon: "success",
@@ -129,7 +127,7 @@ export function ListingTypeState({ children }) {
             }
           })
           .catch((error) => {
-            redirect("/login");
+            console.log(error);
           })
           .finally(() => {
             setLoading(false);
@@ -139,18 +137,18 @@ export function ListingTypeState({ children }) {
   }
 
   return (
-    <ListingType.Provider
+    <Convenience.Provider
       value={{
-        getLidtingType,
-        listingType,
+        getConvenience,
+        addConvenience,
+        editConvenience,
+        deleteConvenience,
+        convenience,
         loading,
         form,
-        deleteListingType,
-        addListingType,
-        editListingType,
       }}
     >
       {children}
-    </ListingType.Provider>
+    </Convenience.Provider>
   );
 }

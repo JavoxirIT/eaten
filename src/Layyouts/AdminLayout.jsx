@@ -4,7 +4,7 @@ import { Button, Layout, Space } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
-import { useAuthHeader, useIsAuthenticated, useSignOut } from "react-auth-kit";
+import { useAuthHeader, useSignOut } from "react-auth-kit";
 import axios from "axios";
 import { SidebarMenu } from "../Components/menu/SidebarMenu";
 import { useAllBooking } from "../Store/Booking/useAllBooking";
@@ -12,15 +12,16 @@ import { useAllListing } from "../Store/Listing/useAllListing";
 import { useCitiesAndDistrict } from "../Store/CitiesAndDistricts/useCitiesAndDistrict";
 import { OnSuspense } from "../Components/suspense/OnSuspense";
 import { useUnit } from "../Store/unit/useUnit";
+import { configs } from "config/config";
 
 export default function AdminLayout() {
   const authHeader = useAuthHeader();
   const signOut = useSignOut();
-  axios.defaults.baseURL = process.env.REACT_APP_URL;
+  axios.defaults.baseURL = configs.apiURl;
   axios.defaults.headers.common["Authorization"] = authHeader();
   axios.defaults.headers.post["Content-Type"] = "application/json";
 
-  const isAuthenticated = useIsAuthenticated();
+  //   const isAuthenticated = useIsAuthenticated();
 
   const { getBooking } = useAllBooking();
   const { getListing } = useAllListing();

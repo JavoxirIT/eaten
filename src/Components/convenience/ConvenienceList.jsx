@@ -1,17 +1,16 @@
 import { MainTable } from "Components/MainTable/MainTable";
-import { useListingType } from "Store/ListingType/useListingType";
-import { ListingTypeForm } from "./ListingTypeForm";
-import { Image } from "antd";
+import { useConvenience } from "Store/Convenience/useConvenience";
+import { ConvenienceForm } from "./ConvenienceForm";
 
-export default function ListingTypeList() {
+export default function ConvenienceList() {
   const {
-    listingType,
-    form,
+    addConvenience,
+    editConvenience,
+    deleteConvenience,
+    convenience,
     loading,
-    deleteListingType,
-    addListingType,
-    editListingType,
-  } = useListingType();
+    form,
+  } = useConvenience();
 
   function onClickTableEdit(e) {
     form.setFieldsValue({
@@ -19,10 +18,9 @@ export default function ListingTypeList() {
       nameuz: e?.nameuz,
       nameru: e?.nameru,
       nameen: e?.nameen,
-      descriptionuz: e?.descriptionuz,
-      descriptionru: e?.descriptionru,
-      descriptionen: e?.descriptionen,
-      icon: e?.icon,
+      descuz: e?.descuz,
+      descru: e?.descru,
+      descen: e?.descen,
     });
   }
   const setEd = () => {
@@ -31,10 +29,9 @@ export default function ListingTypeList() {
       nameuz: "",
       nameru: "",
       nameen: "",
-      descriptionuz: "",
-      descriptionru: "",
-      descriptionen: "",
-      icon: "",
+      descuz: "",
+      descru: "",
+      descen: "",
     });
   };
 
@@ -45,15 +42,6 @@ export default function ListingTypeList() {
         return index + 1;
       },
       width: 100,
-      className: "priority-desc",
-    },
-    {
-      title: "Rasmi",
-      dataIndex: "img",
-      key: "img",
-      render: (_, rec) => {
-        return <Image src={rec.icon} alt="taom rasmi" />;
-      },
       className: "priority-desc",
     },
     {
@@ -76,45 +64,46 @@ export default function ListingTypeList() {
     },
     {
       title: "Batafsil UZ",
-      dataIndex: "descriptionuz",
+      dataIndex: "descuz",
       key: "descriptionuz",
       className: "priority-desc",
     },
     {
       title: "Batafsil RU",
-      dataIndex: "descriptionru",
+      dataIndex: "descru",
       key: "descriptionru",
       className: "priority-desc",
     },
     {
       title: "Batafsil EN",
-      dataIndex: "descriptionen",
+      dataIndex: "descen",
       key: "descriptionen",
       className: "priority-desc",
     },
   ];
+
   return (
     <MainTable
-      pdata={listingType}
+      pdata={convenience}
       pcolumns={columns}
       addData={true}
       pageTitle={"Toifalar"}
       drawerOneTitle={"Toifa qo`shish"}
       drawerThwoTitle={"O'zgartirish"}
       add={
-        <ListingTypeForm
-          onFinish={addListingType}
+        <ConvenienceForm
+          onFinish={addConvenience}
           form={form}
-          submitTitle={"Qo`shish"}
+          submitTitle="Qo`shish"
         />
       }
-      onDelete={deleteListingType}
+      onDelete={deleteConvenience}
       onEdit={onClickTableEdit}
       edit={
-        <ListingTypeForm
-          onFinish={editListingType}
+        <ConvenienceForm
+          onFinish={editConvenience}
           form={form}
-          submitTitle={"Saqlash"}
+          submitTitle="Saqlash"
         />
       }
       setEd={setEd}

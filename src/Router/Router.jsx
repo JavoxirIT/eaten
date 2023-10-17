@@ -9,6 +9,8 @@ import { useListingStatus } from "../Store/ListingStatus/useListingStatus";
 import { useUnit } from "../Store/unit/useUnit";
 import { useFoodType } from "Store/FoodType/useFoodType";
 import { useCategory } from "Store/Category/useCategory";
+import { useListingType } from "Store/ListingType/useListingType";
+import { useConvenience } from "Store/Convenience/useConvenience";
 import AdminLayout from "../Layyouts/AdminLayout";
 import LoginLayout from "../Layyouts/AuthLayout/LoginLayout";
 import IndexPage from "../Pages/Index/IndexPage";
@@ -16,7 +18,10 @@ import Category from "Pages/Category/Catrgory";
 import FoodType from "Pages/FoodType/FoodType";
 import Error404 from "../Components/404/Error404";
 import { OneListings } from "../Components/listing/OneListings";
-import { useListingType } from "Store/ListingType/useListingType";
+import ListingType from "Pages/ListingType/ListingType";
+import Convenience from "Pages/Convenience/Convenience";
+import { useUserVender } from "Store/UserVenders/useUserVender";
+import UserVender from "Pages/UserVender/UserVender";
 
 const AllUsers = lazy(() => import("../Pages/Users/AllUsers"));
 const Listing = lazy(() => import("../Pages/Listing/Listing"));
@@ -37,6 +42,8 @@ export function Router() {
   const { getFoodType } = useFoodType();
   const { getCategory } = useCategory();
   const { getLidtingType } = useListingType();
+  const { getConvenience } = useConvenience();
+  const { getUserVender } = useUserVender();
 
   useEffect(() => {
     getBooking();
@@ -49,6 +56,8 @@ export function Router() {
     getFoodType();
     getCategory();
     getLidtingType();
+    getConvenience();
+    getUserVender();
   }, []);
 
   return useRoutes([
@@ -89,6 +98,10 @@ export function Router() {
           element: <ListingStatus />,
         },
         {
+          path: "listingType",
+          element: <ListingType />,
+        },
+        {
           path: "unitList",
           element: <UnitList />,
         },
@@ -99,6 +112,14 @@ export function Router() {
         {
           path: "category",
           element: <Category />,
+        },
+        {
+          path: "convenience",
+          element: <Convenience />,
+        },
+        {
+          path: "userVender",
+          element: <UserVender />,
         },
       ],
     },

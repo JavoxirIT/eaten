@@ -6,6 +6,8 @@ import { Image, Tag } from "antd";
 import css from "../../css/PageComponent.module.css";
 import EditListing from "./EditListing";
 import { Modal } from "../modal/ModalIsOpenComponents/Modal";
+
+
 export function OneListings() {
   const params = useParams();
   const { getOneListing, listingOne, onEditListing, form } = useAllListing();

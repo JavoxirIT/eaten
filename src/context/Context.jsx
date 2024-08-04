@@ -11,3 +11,5 @@ export const Category = createContext(null);
 export const ListingType = createContext(null);
 export const Convenience = createContext(null);
 export const UserVender = createContext(null);
+export const Disput = createContext(null);
+export const FoodClass = createContext(null);

@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useState } from 'react';
 
 
-export default function DisputState({ children }) {
+export function DisputState({ children }) {
 
 
 	const [disputs, setDisputs] = useState([])
@@ -30,7 +30,7 @@ export default function DisputState({ children }) {
 		try {
 			const response = await axios.delete(`disputs/${id}`);
 			if (response.status === 200) {
-				const data = disputs.filter(el => el.id != id)
+				const data = disputs.filter(el => el.id !== id)
 				setDisputs(data)
 				Swal.fire({
 					icon: "success",

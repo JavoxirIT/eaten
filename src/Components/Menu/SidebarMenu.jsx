@@ -100,6 +100,16 @@ export function SidebarMenu() {
 							icon: <ProjectFilled />,
 							label: <NavLink to="convenience">Qulayliklar</NavLink>,
 						},
+						{
+							key: "categoryBlock",
+							icon: <ProjectFilled />,
+							label: <NavLink to="categoryBlock">Blog</NavLink>,
+						},
+						{
+							key: "webSiteText",
+							icon: <ProjectFilled />,
+							label: <NavLink to="webSiteText">Saytdagi so`zlar</NavLink>,
+						},
 					],
 				},
 			]}

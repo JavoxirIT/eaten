@@ -4,12 +4,58 @@ import { MainTable } from "Components/MainTable/MainTable";
 import useFoodClass from "Store/FoofClass/useFoodClass";
 import { Image } from "antd"
 import FoodClassForm from "./FoodClassForm";
+
+let columns = [
+	{
+		title: "Rasmi",
+		dataIndex: "img",
+		key: "img",
+		render: (_, rec) => {
+			return <Image width={50} src={rec.img} alt="image" />;
+		},
+		className: "priority-desc",
+	},
+	{
+		title: "Nomi UZ",
+		dataIndex: "nameuz",
+		key: "nameuz",
+		className: "priority-desc",
+	},
+	{
+		title: "Nomi RU",
+		dataIndex: "nameru",
+		key: "nameru",
+		className: "priority-desc",
+	},
+	{
+		title: "Nomi EN",
+		dataIndex: "nameen",
+		key: "nameen",
+		className: "priority-desc",
+	},
+	{
+		title: "Batafsil UZ",
+		dataIndex: "descriptionuz",
+		key: "descriptionuz",
+		className: "priority-desc",
+	},
+	{
+		title: "Batafsil RU",
+		dataIndex: "descriptionru",
+		key: "descriptionru",
+		className: "priority-desc",
+	},
+	{
+		title: "Batafsil EN",
+		dataIndex: "descriptionen",
+		key: "descriptionen",
+		className: "priority-desc",
+	},
+];
+
+
 export default function FoodClassTable() {
-	const { getFoodClass, postFoodClass, updateFoodClass, deleteFoodClass, foodClass, loading, form, uploadProps } =
-		useFoodClass();
-
-
-	useEffect(() => { getFoodClass(); }, [])
+	const { loading, foodClass, form, postFoodClass, putFoodClass, deleteFoodClass, imageProps } = useFoodClass();
 
 	function onClickTableEdit(e) {
 		form.setFieldsValue({
@@ -17,8 +63,8 @@ export default function FoodClassTable() {
 			nameuz: e?.nameuz,
 			nameru: e?.nameru,
 			nameen: e?.nameen,
-			descriptionuz: e?.descriptionuz,
 			descriptionru: e?.descriptionru,
+			descriptionuz: e?.descriptionuz,
 			descriptionen: e?.descriptionen,
 		});
 	}
@@ -33,80 +79,21 @@ export default function FoodClassTable() {
 			descriptionen: "",
 		});
 	};
-	let columns = [
-		{
-			title: "№",
-			dataIndex: "id",
-			key: "id",
-			className: "priority-desc",
-			render: (_, rec, index) => {
-				return index + 1;
-			},
-		},
-		{
-			title: "Rasmi",
-			dataIndex: "img",
-			key: "img",
-			render: (_, rec) => {
-				return <Image src={rec.img} style={{ width: "50px" }} />;
-			},
-			className: "priority-desc",
-		},
-		{
-			title: "Nomi UZ",
-			dataIndex: "nameuz",
-			key: "nameuz",
-			className: "priority-desc",
-		},
-		{
-			title: "Nomi RU",
-			dataIndex: "nameru",
-			key: "nameru",
-			className: "priority-desc",
-		},
-		{
-			title: "Nomi EN",
-			dataIndex: "nameen",
-			key: "nameen",
-			className: "priority-desc",
-		},
-		{
-			title: "Batafsil UZ",
-			dataIndex: "descuz",
-			key: "descuz",
-			className: "priority-desc",
-		},
-		{
-			title: "Batafsil RU",
-			dataIndex: "descru",
-			key: "descru",
-			className: "priority-desc",
-		},
-		{
-			title: "Batafsil EN",
-			dataIndex: "descen",
-			key: "descen",
-			className: "priority-desc",
-		},
-	];
-
-
-
 
 	return (
 		<MainTable
 			pdata={foodClass}
 			pcolumns={columns}
 			addData={true}
-			pageTitle={"Ta`omlar turi"}
-			drawerOneTitle={"Qo`shish"}
-			drawerThwoTitle={"O`zgartirish"}
+			pageTitle={"Ta`om turi"}
+			drawerOneTitle={"Yangi ta`om turi qo`shish"}
+			drawerThwoTitle={"O'zgartirish"}
+			add={<FoodClassForm onFinish={postFoodClass} form={form} imageProps={imageProps} />}
 			onDelete={deleteFoodClass}
 			onEdit={onClickTableEdit}
+			edit={<FoodClassForm onFinish={putFoodClass} form={form} imageProps={imageProps} />}
 			setEd={setEd}
 			loading={loading}
-			edit={<FoodClassForm form={form} onFinish={updateFoodClass} uploadProps={uploadProps} />}
-			add={<FoodClassForm form={form} onFinish={postFoodClass} uploadProps={uploadProps} />}
 		/>
 	);
 }

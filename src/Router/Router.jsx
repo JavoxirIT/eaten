@@ -20,24 +20,23 @@ import Convenience from "Pages/Convenience/Convenience";
 import UserVender from "Pages/UserVender/UserVender";
 import Error404 from "Components/404/Error404";
 import { OneListings } from "Components/listing/OneListings";
+import useFoodClass from "Store/FoofClass/useFoodClass";
+import useCategoryBlock from "Store/СategoryBlock/useCategoryBlock";
+import CategoryBlock from "Pages/CategoryBlock/CategoryBlock";
 
 
+
+const WebSiteText = lazy(() => import("Pages/WebSiteText/WebSiteText"));
 const FoodClass = lazy(() => import("Pages/FoodClass/FoodClass"))
 const Disput = lazy(() => import("Pages/Disput/Disput"));
 const AllUsers = lazy(() => import("Pages/Users/AllUsers"));
 const Listing = lazy(() => import("Pages/Listing/Listing"));
-const AllBooking = lazy(() => import("Pages/Booking/AllBooking"));
-const ListingStatus = lazy(() =>
-	import("Components/listingStatus/ListingStatus")
-);
-// const Priority = lazy(() => import("Pages/priority/Priority"));
+const ListingStatus = lazy(() => import("Components/listingStatus/ListingStatus"));
 const UnitList = lazy(() => import("Components/unit/UnitList"));
 
 export function Router() {
-	// const { getBooking } = useAllBooking();
 	const { getListing } = useAllListing();
 	const { getСities, getDistrict } = useCitiesAndDistrict();
-	// const { getPriority } = usePriority();
 	const { getListingStatus } = useListingStatus();
 	const { getUnit } = useUnit();
 	const { getFoodType } = useFoodType();
@@ -45,20 +44,22 @@ export function Router() {
 	const { getLidtingType } = useListingType();
 	const { getConvenience } = useConvenience();
 	const { getUserVender } = useUserVender();
+	const { getFoodClass } = useFoodClass();
+	const { getCategoryBlock } = useCategoryBlock()
 
 	useEffect(() => {
-		// getBooking();
 		getListing();
 		getСities();
 		getDistrict();
 		getUnit();
-		// getPriority();
 		getListingStatus();
 		getFoodType();
 		getCategory();
 		getLidtingType();
 		getConvenience();
 		getUserVender();
+		getFoodClass();
+		getCategoryBlock();
 		// eslint-disable-next-line
 	}, []);
 
@@ -75,10 +76,6 @@ export function Router() {
 					path: "/users",
 					element: <AllUsers />,
 				},
-				// {
-				// 	path: "/booking",
-				// 	element: <AllBooking />,
-				// },
 				{
 					path: "/all-listing",
 					element: <Listing />,
@@ -87,10 +84,6 @@ export function Router() {
 					path: "/all-listing/:id",
 					element: <OneListings />,
 				},
-				// {
-				// 	path: "priority",
-				// 	element: <Priority />,
-				// },
 				{
 					path: "listingStatus",
 					element: <ListingStatus />,
@@ -126,6 +119,14 @@ export function Router() {
 				{
 					path: "foodClass",
 					element: <FoodClass />,
+				},
+				{
+					path: "categoryBlock",
+					element: <CategoryBlock />,
+				},
+				{
+					path: "webSiteText",
+					element: <WebSiteText />,
 				},
 			],
 		},

@@ -1,53 +1,147 @@
-import { FoodClass } from 'context/Context'
-import axios from 'axios'
-import Swal from 'sweetalert2'
-import { useForm } from 'antd/es/form/Form'
-import { useState } from 'react'
-import { message } from 'antd'
-import { configs } from 'config/config'
+import { useState } from "react";
+import { FoodClass } from "context/Context";
+import { useForm } from "antd/es/form/Form";
+import { message } from "antd";
+import { configs } from "config/config";
+import axios from "axios";
+import Redirect from "tools/redirect";
+import Swal from "sweetalert2";
 
-export default function FoodClassState({ children }) {
-
-	const [foodClass, setFoodClass] = useState([])
-	const [loading, setLoading] = useState(false)
+export function FoodClassState({ children }) {
 	const [form] = useForm();
+	const [loading, setLoading] = useState(false);
+	const [foodClass, setFoodClass] = useState([]);
 
-
-	async function getFoodClass() {
-		setLoading(true)
-		try {
-			const response = await axios.get("food-class");
-			const data = await response.data;
-			if (response.status === 200) {
-				setFoodClass(data)
-			} else {
-				Swal.fire({
-					icon: "error",
-					title: "Ma`lumotlarni olishda xatolik"
-				})
-			}
-		} catch (error) {
-			Swal.fire({
-				icon: "error",
-				title: error
+	function getFoodClass() {
+		setLoading(true);
+		axios
+			.get("food-class")
+			.then((res) => {
+				if (res.status === 200) {
+					setFoodClass(res.data);
+				}
 			})
-		} finally {
-			setLoading(false)
-		}
+			.catch((err) => {
+				Redirect("/login");
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	}
+
 	function postFoodClass(data) {
-		console.log("send", data);
+		setLoading(true)
+		Swal.fire({
+			title: "Ishinchingiz komilmi",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			cancelButtonText: "Yo'q`",
+			confirmButtonText: "Ha",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.post(`food-class`, data)
+					.then((res) => {
+						if (res.status === 200) {
+							// setFoodType([...foodType, res.data]);
+							Swal.fire({
+								title: "Qo'shildi",
+								icon: "success",
+							});
+							getFoodClass()
+						} else {
+							Swal.fire({
+								title: "Ma`lumot Qo'shilmadi",
+								icon: "error",
+							});
+						}
+					})
+					.catch((error) => {
+						Redirect("/login");
+					})
+					.finally(() => {
+						setLoading(false);
+					});
+			} else setLoading(false);
+		});
 	}
-	function updateFoodClass(data) {
-		console.log("update", data);
+	function putFoodClass(data) {
+		setLoading(true)
+		Swal.fire({
+			title: "Ishinchingiz komilmi",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			cancelButtonText: "Yo'q`",
+			confirmButtonText: "Ha",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.put(`food-class/${data.id}`, data)
+					.then((res) => {
+						if (res.status === 200) {
+							setFoodClass([...foodClass.filter((item) => item.id !== data.id), data]);
+							Swal.fire({
+								title: "Muvofaqiyatli",
+								icon: "success",
+							});
+						} else {
+							Swal.fire({
+								title: "Ma`lumot Qo'shilmadi",
+								icon: "error",
+							});
+						}
+					})
+					.catch((error) => {
+						Redirect("/login");
+					})
+					.finally(() => {
+						setLoading(false);
+					});
+			} else setLoading(false);
+		});
 	}
 	function deleteFoodClass(_, data) {
-		console.log("delete", data);
+		setLoading(true)
+		Swal.fire({
+			title: "Ishinchingiz komilmi",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			cancelButtonText: "Yo'q`",
+			confirmButtonText: "Ha",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.delete(`food-class/${data.id}`)
+					.then((res) => {
+						if (res.status === 200) {
+							setFoodClass(foodClass.filter((item) => item.id !== data.id));
+							Swal.fire({
+								title: "Muvofaqiyatli",
+								icon: "success",
+							});
+						} else {
+							Swal.fire({
+								title: "Ooops",
+								icon: "error",
+							});
+						}
+					})
+					.catch((error) => {
+						Redirect("/login");
+					})
+					.finally(() => {
+						setLoading(false);
+					});
+			} else setLoading(false);
+		});
 	}
-
-
-
-	const uploadProps = {
+	const imageProps = {
 		name: "image",
 		action: configs.uploadUrl,
 		headers: {
@@ -68,10 +162,10 @@ export default function FoodClassState({ children }) {
 			}
 		},
 	};
-
-	const value = { getFoodClass, postFoodClass, updateFoodClass, deleteFoodClass, foodClass, loading, form, uploadProps }
-
+	const value = { loading, getFoodClass, foodClass, form, postFoodClass, putFoodClass, deleteFoodClass, imageProps }
 	return (
-		<FoodClass.Provider value={value} >{children}</FoodClass.Provider>
-	)
+		<FoodClass.Provider value={value}>
+			{children}
+		</FoodClass.Provider>
+	);
 }

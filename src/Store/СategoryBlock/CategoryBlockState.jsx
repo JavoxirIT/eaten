@@ -11,6 +11,7 @@ export default function CategoryBlockState({ children }) {
 	const [loading, setLoading] = useState(false);
 	const [form] = useForm();
 
+
 	async function getCategoryBlock() {
 		setLoading(true)
 		try {

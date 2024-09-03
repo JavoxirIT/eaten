@@ -16,15 +16,15 @@ import { PatternFormat } from "react-number-format";
 import { ModalCenter } from "../modal/ModalMiddle/ModalCenter";
 import { useCitiesAndDistrict } from "../../Store/CitiesAndDistricts/useCitiesAndDistrict";
 import { useEffect, useState } from "react";
-import { usePriority } from "../../Store/Priority/usePriority";
 import { useListingStatus } from "../../Store/ListingStatus/useListingStatus";
 import { CloudUploadOutlined, InboxOutlined } from "@ant-design/icons";
 import { useForm } from "antd/es/form/Form";
 import useLocalStorage from "../../hook/useLocalStorage";
-import { MyMapComponent } from "../leflet/Leflet";
+import { MapComponent } from "../leflet/Leflet";
 import css from "../../css/PageComponent.module.css";
 import { useAllListing } from "../../Store/Listing/useAllListing";
 import { configs } from "config/config";
+import { useConvenience } from "Store/Convenience/useConvenience";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -35,7 +35,7 @@ export function AddListing() {
 	const authHeader = useAuthHeader();
 	const [form] = useForm();
 	const { sities, district } = useCitiesAndDistrict();
-	const { priority } = usePriority();
+	const { convenience } = useConvenience();
 	const { listingStatus } = useListingStatus();
 
 	const [api, contextHolder] = notification.useNotification();
@@ -46,7 +46,7 @@ export function AddListing() {
 			duration: 3,
 		});
 	};
-
+	// console.log("listingStatus", listingStatus);
 	const [isDistrict, setDistrict] = useState(district);
 	function onViloyatSelect(e) {
 		setDistrict(district.filter((item) => item.regions.id === e));
@@ -142,7 +142,7 @@ export function AddListing() {
 				<h2>Yangi elon</h2>
 				<Divider />
 				<div className={css.blockLeaflet}>
-					<MyMapComponent setDataLocation={setDataLocation} />
+					<MapComponent setDataLocation={setDataLocation} />
 				</div>
 				<Divider />
 				<Form form={form} layout="vertical" onFinish={addListing}>
@@ -295,7 +295,7 @@ export function AddListing() {
 					// ]}
 					>
 						<Select allowClear virtual={false}>
-							{priority.map((i) => (
+							{convenience.map((i) => (
 								<Option key={i.id} value={i.id}>
 									{i.nameuz}
 								</Option>
@@ -315,7 +315,7 @@ export function AddListing() {
 						<Select allowClear virtual={false}>
 							{listingStatus.map((i) => (
 								<Option key={i.id} value={i.id}>
-									{i.name}
+									{i.nameuz}
 								</Option>
 							))}
 						</Select>
@@ -387,7 +387,7 @@ export function AddListing() {
 						<Button htmlType="submit">Saqlash</Button>
 					</Item>
 				</Form>
-			</ModalCenter>
+			</ModalCenter >
 		</>
 	);
 }

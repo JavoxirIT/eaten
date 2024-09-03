@@ -2,6 +2,7 @@ import { Disput } from 'context/Context';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
+import { DELETED, ERROR_DELETE_FETCH } from 'tools/const';
 
 
 export function DisputState({ children }) {
@@ -34,19 +35,19 @@ export function DisputState({ children }) {
 				setDisputs(data)
 				Swal.fire({
 					icon: "success",
-					title: "Muvafaqiayli o`chirildi"
+					title: DELETED
 				})
 			} else {
 				Swal.fire({
 					icon: "error",
-					title: "Diqqat! ma`lumotlat o`chirishda xatolik"
+					title: ERROR_DELETE_FETCH
 				})
 			}
 		} catch (error) {
 			console.log(error);
 			Swal.fire({
 				icon: "error",
-				title: "Diqqat! ma`lumotlat o`chirishda xatolik"
+				title: ERROR_DELETE_FETCH
 			})
 		} finally {
 			setLoding(false);

@@ -55,7 +55,7 @@ let columns = [
 
 
 export default function FoodClassTable() {
-	const { loading, foodClass, form, postFoodClass, putFoodClass, deleteFoodClass, imageProps } = useFoodClass();
+	const { loading, foodClass, form, postFoodClass, putFoodClass, deleteFoodClass, imageProps, getFoodClass } = useFoodClass();
 
 	function onClickTableEdit(e) {
 		form.setFieldsValue({
@@ -79,6 +79,8 @@ export default function FoodClassTable() {
 			descriptionen: "",
 		});
 	};
+
+	useEffect(() => { getFoodClass(); }, [])
 
 	return (
 		<MainTable

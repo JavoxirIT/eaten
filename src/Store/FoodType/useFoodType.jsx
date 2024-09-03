@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { FoodType } from "../../context/Context";
+import { FoodTypeContext } from "../../context/Context";
 
 export function useFoodType() {
-  return useContext(FoodType);
+	return useContext(FoodTypeContext);
 }

@@ -57,18 +57,9 @@ export default function AdminLayout() {
 
 	return (
 		<Layout>
-			<Header style={{
-				position: 'sticky',
-				top: 0,
-				zIndex: 5,
-				width: '100%',
-				display: 'flex',
-				alignItems: 'center',
-				display: "flex",
-				justifyContent: "space-between"
-			}} >
+			<Header style={style.header} >
 				<div style={style.blockLogo}>
-					<span style={style.logo}>EATEN</span>
+					<span className="logo">EATEN</span>
 				</div>
 				<Space>
 					<Tooltip placement="bottom" title={auth.lastname}>
@@ -108,11 +99,14 @@ export default function AdminLayout() {
 
 const style = {
 	header: {
+		position: 'sticky',
+		top: 0,
+		zIndex: 5,
+		width: '100%',
+		display: 'flex',
+		alignItems: 'center',
 		display: "flex",
-		alignItems: "center",
-		justifyContent: "space-between",
-		paddingInline: "0.625rem",
-		// backgroundColor: '#23334f'
+		justifyContent: "space-between"
 	},
 	blockLogo: {
 		lineHeight: "0",
@@ -120,7 +114,7 @@ const style = {
 		alignItems: "center",
 		gap: "0.625rem",
 	},
-	logo: { fontSize: "1rem", color: "#ff9300" },
+	// logo: { fontSize: "1rem", color: "#ff9300" },
 	layout: { padding: "0.625rem", backgroundColor: "#87cefa22" },
 	content: { padding: "1.5rem", margin: 0, minHeight: "93vh" },
 	siderStyle: {

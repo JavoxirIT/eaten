@@ -8,10 +8,9 @@
   grid-template-columns: repeat(auto-fit, minmax(365px, 1fr));
   gap: var(--margin-10);
 }
-.listingContainerOne{
-
+.listingContainerOne {
   display: grid;
-  grid-template: auto / repeat(auto-fit, minmax(365px, 1fr));  ;
+  grid-template: auto / repeat(auto-fit, minmax(365px, 1fr));
   gap: var(--padding-5);
 }
 .listingImgBlockStyle {
@@ -25,9 +24,18 @@
 .listingTableTd {
   vertical-align: top;
 }
+.listingTableTdConveniences {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+  /* width: 50%; */
+}
 .listingTextDescription {
   text-align: justify;
-  max-width: 450px;
+  /* min-width: 450px; */
+  max-height: 100px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 /* block listing add and block leaflet */
 .blockLeaflet {

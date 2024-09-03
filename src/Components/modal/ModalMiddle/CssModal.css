@@ -36,6 +36,21 @@
   right: 0;
 }
 
+.edit-open-modal::-webkit-scrollbar {
+  display: none;
+}
+
+/* Скрываем scrollbar для IE, Edge и Firefox */
+.edit-open-modal {
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body.edit-open-modal {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
 @media (min-width: 220px) and (max-width: 1175px) {
   .edit-open-modal {
     display: flex;

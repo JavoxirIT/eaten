@@ -10,10 +10,13 @@
   justify-content: space-between;
   padding-bottom: var(--padding-15);
   align-items: center;
+  column-gap: 10px;
 }
 .header-title {
   margin: 0;
   font-size: 1.125rem;
+  height: 54px;
+  overflow: hidden;
 }
 .header-btn-block {
   display: flex;
@@ -21,4 +24,6 @@
 }
 
 .card-body {
+  /* user-select: none; */
+  /* overflow: hidden; */
 }

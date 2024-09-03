@@ -4,6 +4,7 @@ import axios from "axios";
 import Redirect from "tools/redirect";
 import Swal from "sweetalert2";
 import { useForm } from "antd/es/form/Form";
+import { TRANSLATION_NOT_UPDATED, TRANSLATION_UPDATED } from "tools/const";
 
 export default function WebSiteTextState({ children }) {
 	const [translateText, setTranslateText] = useState([]);
@@ -32,12 +33,12 @@ export default function WebSiteTextState({ children }) {
 			.then((response) => {
 				if (response.status === 200) {
 					Swal.fire({
-						title: "Tarjima yangilandi",
+						title: TRANSLATION_UPDATED,
 						icon: "success",
 					});
 				} else {
 					Swal.fire({
-						title: "Tarjimani yangilashda hatolik",
+						title: TRANSLATION_NOT_UPDATED,
 						icon: "error",
 					});
 				}

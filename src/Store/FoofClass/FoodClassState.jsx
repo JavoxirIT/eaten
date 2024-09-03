@@ -6,6 +6,7 @@ import { configs } from "config/config";
 import axios from "axios";
 import Redirect from "tools/redirect";
 import Swal from "sweetalert2";
+import { ADDED, ARE_YOU_SURE, CHANGED, DELETED, ERROR_DELETE_FETCH, ERROR_POST_FETCH, ERROR_UPDATE_FETCH, IMAGE_NOT_UPLOADED, IMAGE_UPLOADED, NO, YES } from "tools/const";
 
 export function FoodClassState({ children }) {
 	const [form] = useForm();
@@ -32,13 +33,13 @@ export function FoodClassState({ children }) {
 	function postFoodClass(data) {
 		setLoading(true)
 		Swal.fire({
-			title: "Ishinchingiz komilmi",
+			title: ARE_YOU_SURE,
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
-			cancelButtonText: "Yo'q`",
-			confirmButtonText: "Ha",
+			cancelButtonText: NO,
+			confirmButtonText: YES,
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
@@ -47,13 +48,13 @@ export function FoodClassState({ children }) {
 						if (res.status === 200) {
 							// setFoodType([...foodType, res.data]);
 							Swal.fire({
-								title: "Qo'shildi",
+								title: ADDED,
 								icon: "success",
 							});
 							getFoodClass()
 						} else {
 							Swal.fire({
-								title: "Ma`lumot Qo'shilmadi",
+								title: ERROR_POST_FETCH,
 								icon: "error",
 							});
 						}
@@ -70,13 +71,13 @@ export function FoodClassState({ children }) {
 	function putFoodClass(data) {
 		setLoading(true)
 		Swal.fire({
-			title: "Ishinchingiz komilmi",
+			title: ARE_YOU_SURE,
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
-			cancelButtonText: "Yo'q`",
-			confirmButtonText: "Ha",
+			cancelButtonText: NO,
+			confirmButtonText: YES,
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
@@ -85,12 +86,12 @@ export function FoodClassState({ children }) {
 						if (res.status === 200) {
 							setFoodClass([...foodClass.filter((item) => item.id !== data.id), data]);
 							Swal.fire({
-								title: "Muvofaqiyatli",
+								title: CHANGED,
 								icon: "success",
 							});
 						} else {
 							Swal.fire({
-								title: "Ma`lumot Qo'shilmadi",
+								title: ERROR_UPDATE_FETCH,
 								icon: "error",
 							});
 						}
@@ -107,7 +108,7 @@ export function FoodClassState({ children }) {
 	function deleteFoodClass(_, data) {
 		setLoading(true)
 		Swal.fire({
-			title: "Ishinchingiz komilmi",
+			title: ARE_YOU_SURE,
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
@@ -122,12 +123,12 @@ export function FoodClassState({ children }) {
 						if (res.status === 200) {
 							setFoodClass(foodClass.filter((item) => item.id !== data.id));
 							Swal.fire({
-								title: "Muvofaqiyatli",
+								title: DELETED,
 								icon: "success",
 							});
 						} else {
 							Swal.fire({
-								title: "Ooops",
+								title: ERROR_DELETE_FETCH,
 								icon: "error",
 							});
 						}
@@ -156,9 +157,9 @@ export function FoodClassState({ children }) {
 				});
 			}
 			if (info.file.status === "done") {
-				message.success(`${info.file.name} Rasim yuklandi`);
+				message.success(`${info.file.name} ${IMAGE_UPLOADED}`);
 			} else if (info.file.status === "error") {
-				message.error(`${info.file.name} Xatolik rasim yuklanmadi.`);
+				message.error(`${info.file.name} ${IMAGE_NOT_UPLOADED}`);
 			}
 		},
 	};

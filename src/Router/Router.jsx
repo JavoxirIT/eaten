@@ -1,15 +1,14 @@
 import { lazy, useEffect } from "react";
 import { useRoutes } from "react-router-dom";
 // import { useAllBooking } from "Store/Booking/useAllBooking";
-import { useAllListing } from "Store/Listing/useAllListing";
+// import { useAllListing } from "Store/Listing/useAllListing";
 import { useCitiesAndDistrict } from "Store/CitiesAndDistricts/useCitiesAndDistrict";
 // import { usePriority } from "Store/Priority/usePriority";
-import { useListingStatus } from "Store/ListingStatus/useListingStatus";
 import { useUnit } from "Store/unit/useUnit";
-import { useFoodType } from "Store/FoodType/useFoodType";
+// import { useFoodType } from "Store/FoodType/useFoodType";
 import { useCategory } from "Store/Category/useCategory";
 import { useListingType } from "Store/ListingType/useListingType";
-import { useConvenience } from "Store/Convenience/useConvenience";
+// import { useConvenience } from "Store/Convenience/useConvenience";
 import { useUserVender } from "Store/UserVenders/useUserVender";
 import AdminLayout from "Layyouts/AdminLayout";
 import IndexPage from "Pages/Index/IndexPage";
@@ -20,9 +19,10 @@ import Convenience from "Pages/Convenience/Convenience";
 import UserVender from "Pages/UserVender/UserVender";
 import Error404 from "Components/404/Error404";
 import { OneListings } from "Components/listing/OneListings";
-import useFoodClass from "Store/FoofClass/useFoodClass";
+// import useFoodClass from "Store/FoofClass/useFoodClass";
 import useCategoryBlock from "Store/СategoryBlock/useCategoryBlock";
 import CategoryBlock from "Pages/CategoryBlock/CategoryBlock";
+import Listing from "Pages/Listing/Listing";
 
 
 
@@ -30,36 +30,27 @@ const WebSiteText = lazy(() => import("Pages/WebSiteText/WebSiteText"));
 const FoodClass = lazy(() => import("Pages/FoodClass/FoodClass"))
 const Disput = lazy(() => import("Pages/Disput/Disput"));
 const AllUsers = lazy(() => import("Pages/Users/AllUsers"));
-const Listing = lazy(() => import("Pages/Listing/Listing"));
 const ListingStatus = lazy(() => import("Components/listingStatus/ListingStatus"));
 const UnitList = lazy(() => import("Components/unit/UnitList"));
 
 export function Router() {
-	const { getListing } = useAllListing();
+
 	const { getСities, getDistrict } = useCitiesAndDistrict();
-	const { getListingStatus } = useListingStatus();
+
 	const { getUnit } = useUnit();
-	const { getFoodType } = useFoodType();
-	const { getCategory } = useCategory();
-	const { getLidtingType } = useListingType();
-	const { getConvenience } = useConvenience();
+
+	
+
 	const { getUserVender } = useUserVender();
-	const { getFoodClass } = useFoodClass();
-	const { getCategoryBlock } = useCategoryBlock()
+	
+
 
 	useEffect(() => {
-		getListing();
-		getСities();
-		getDistrict();
-		getUnit();
-		getListingStatus();
-		getFoodType();
-		getCategory();
-		getLidtingType();
-		getConvenience();
-		getUserVender();
-		getFoodClass();
-		getCategoryBlock();
+		// getСities();
+		// getDistrict();
+		// getUnit();
+		// getConvenience();
+		// getUserVender();
 		// eslint-disable-next-line
 	}, []);
 

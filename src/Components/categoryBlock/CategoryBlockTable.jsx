@@ -1,6 +1,7 @@
 import { MainTable } from "Components/MainTable/MainTable";
 import useCategoryBlock from "Store/СategoryBlock/useCategoryBlock";
 import CategoryBlockForm from "./CategoryBlockForm";
+import { useEffect } from "react";
 
 let columns = [
 	{
@@ -19,8 +20,7 @@ let columns = [
 
 
 export default function CategoryBlockTable() {
-	const { postCategoryBlock, putCategoryBlock, deleteCategoryBlock, loading, dataCategoryBlock, form } = useCategoryBlock();
-
+	const { postCategoryBlock, putCategoryBlock, deleteCategoryBlock, loading, dataCategoryBlock, form, getCategoryBlock } = useCategoryBlock();
 	function onClickTableEdit(e) {
 		form.setFieldsValue({
 			id: e?.id,
@@ -33,6 +33,10 @@ export default function CategoryBlockTable() {
 			catname: "",
 		});
 	};
+
+	useEffect(() => {
+		getCategoryBlock()
+	}, [])
 
 	return (
 		<MainTable
